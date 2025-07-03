@@ -20,17 +20,21 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm install --legacy-peer-deps'
+        dir('android') {
+          sh 'npm install --legacy-peer-deps'
+        }
       }
     }
 
     stage('Lint') {
       steps {
-        script {
-          try {
-            sh 'npx eslint .'
-          } catch (Exception e) {
-            echo "⚠️ Linting failed or ESLint not installed. Continuing..."
+        dir('android') {
+          script {
+            try {
+              sh 'npx eslint .'
+            } catch (Exception e) {
+              echo "⚠️ Linting failed or ESLint not installed. Continuing..."
+            }
           }
         }
       }
@@ -38,11 +42,13 @@ pipeline {
 
     stage('Test') {
       steps {
-        script {
-          try {
-            sh 'npm test'
-          } catch (Exception e) {
-            echo "⚠️ Tests failed or not defined. Continuing..."
+        dir('android') {
+          script {
+            try {
+              sh 'npm test'
+            } catch (Exception e) {
+              echo "⚠️ Tests failed or not defined. Continuing..."
+            }
           }
         }
       }
@@ -60,7 +66,9 @@ pipeline {
 
     stage('Archive APK') {
       steps {
-        archiveArtifacts artifacts: '**/app/build/outputs/**/*.apk', fingerprint: true
+        dir('android') {
+          archiveArtifacts artifacts: '**/app/build/outputs/**/*.apk', fingerprint: true
+        }
       }
     }
   }
