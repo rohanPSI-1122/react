@@ -8,7 +8,7 @@ pipeline {
   }
 
   tools {
-    nodejs 'jsnode' // Must match the name configured in Jenkins global tool config
+    nodejs 'jsnode' // Must match Jenkins global tool name
   }
 
   stages {
@@ -51,7 +51,6 @@ pipeline {
     stage('Build APK') {
       steps {
         dir('android') {
-          // Ensure gradlew is executable
           sh 'chmod +x gradlew'
           sh './gradlew assembleDebug'
         }
@@ -73,3 +72,4 @@ pipeline {
       echo "❌ Build failed."
     }
   }
+}
