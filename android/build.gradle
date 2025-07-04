@@ -159,7 +159,8 @@ repositories {
 }
 
 dependencies {
-    implementation files("/home/ubuntu/workspace/ANDY/node_modules/react-native/android")
+    implementation project(':ReactAndroid')
+    
     if (REACT_NATIVE_MINOR_VERSION >= 76) {
         implementation("com.facebook.fresco:fresco:${FRESCO_VERSION}") {
             exclude group: 'com.facebook.soloader'
