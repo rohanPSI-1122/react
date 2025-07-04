@@ -6,6 +6,11 @@ buildscript {
         repositories {
             mavenCentral()
             google()
+            maven {
+            // 👇 This tells Gradle where to find React Native
+            url "/home/ubuntu/workspace/ANDY/node_modules/react-native/android"
+        }
+            
         }
 
         dependencies {
@@ -149,12 +154,12 @@ repositories {
     google()
     maven {
         // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url "$rootDir/../node_modules/react-native/android"
+        url "/home/ubuntu/workspace/ANDY/node_modules/react-native/android"
     }
 }
 
 dependencies {
-    implementation files("${rootDir}/../node_modules/react-native/android")
+    implementation files("/home/ubuntu/workspace/ANDY/node_modules/react-native/android")
     if (REACT_NATIVE_MINOR_VERSION >= 76) {
         implementation("com.facebook.fresco:fresco:${FRESCO_VERSION}") {
             exclude group: 'com.facebook.soloader'
