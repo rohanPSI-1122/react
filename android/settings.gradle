@@ -1,0 +1,5 @@
+rootProject.name = 'ANDY'
+
+include ':app'
+include ':ReactAndroid'
+project(':ReactAndroid').projectDir = new File('/home/ubuntu/workspace/ANDY/node_modules/react-native/ReactAndroid')
