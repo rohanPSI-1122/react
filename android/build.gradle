@@ -165,3 +165,11 @@ dependencies {
         implementation("com.facebook.fresco:middleware:${FRESCO_VERSION}")
     }
 }
+
+
+
+android {
+    compileSdkVersion 33 // or a valid version
+    ...
+}
+
